@@ -1,4 +1,4 @@
-def call(String dockerPrivateRegistry) 
+def call() 
 {
             docker.withRegistry("http://${dockerPrivateRegistry}") 
 			{
