@@ -1,4 +1,4 @@
-def call(String imageName, String buildImageTag, String dockerPrivateRegistry, String imageMetadata) 
+def call(String imageName, String buildImageTag, String dockerPrivateRegistry, String imageMetadata , String imageSrcDirectory) 
 {
             docker.withRegistry("http://${dockerPrivateRegistry}") 
 			{
