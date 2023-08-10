@@ -1,20 +1,21 @@
 // devsecops/shared-pipeline.groovy
 
-def runSharedPipeline(String dockerImageName, String credentialsId, String projectId, String gkeCluster, String gkeZone, String namespace, String gitUrl) {
+def runSharedPipeline(String dockerImageName, String gitUrl) {
     pipeline {
         agent any
         environment {
             DOCKER_IMAGE_NAME = dockerImageName
-            CREDENTIALS_ID = credentialsId
-            PROJECT_ID = projectId
-            GKE_CLUSTER = gkeCluster
-            GKE_ZONE = gkeZone
-            NAMESPACE = namespace
+            CREDENTIALS_ID = 'google'
+            PROJECT_ID = '	jenkins-cicd-391104'
+            GKE_CLUSTER = 'jenkins-gcr'
+            GKE_ZONE = 'australia-southeast1'
+            NAMESPACE = 'default'
+            GIT_URL = 'gitUrl'
         }
         stages {
             stage('Checkout') {
                 steps {
-                    git branch: 'main', credentialsId: 'github-jenkins', url: gitUrl
+                    git branch: 'main', credentialsId: 'github-jenkins', url: 'GIT_URL'
                 }
             }
             stage('Build') {
